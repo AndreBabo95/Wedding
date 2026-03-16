@@ -51,10 +51,11 @@
         .form-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9em; }
         
-        input[type="text"], input[type="email"], select, textarea {
-            width: 100%; padding: 12px; border: 1px solid #ddd;
-            border-radius: 5px; box-sizing: border-box; font-family: 'Montserrat', sans-serif;
-        }
+        input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+    width: 100%; padding: 12px; border: 1px solid #ddd;
+    border-radius: 5px; box-sizing: border-box; font-family: 'Montserrat', sans-serif;
+}
+
 
         button.action-btn {
             width: 100%; background-color: var(--accent-color); color: white;
@@ -172,7 +173,7 @@
         // ==========================================
         // PASTE YOUR GOOGLE WEB APP URL RIGHT HERE:
         // ==========================================
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzMosFg3gAQ819W77a10cqyj3Z9bsvYHKHBIhFBmY5d0mqlaYn7HNdomK8spOeTEZ3HDg/exec"; 
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxQ18Md_Gq6unC4rRnrGuqRVt0bpLw7SjDCOvf5FgUnx9PqLFOD92gHlEQ4yEiAUWGpNw/exec"; 
 
         // --- Smart Language Logic (Memory) ---
         let currentLang = localStorage.getItem('weddingLang') || (navigator.language.toLowerCase().includes('pt') ? 'pt' : 'en');
