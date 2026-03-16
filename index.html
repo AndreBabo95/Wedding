@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #FAF8F5;
+            --text-color: #333333;
+            --accent-color: #8C9A8B; 
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden; 
+        }
+
+        h1, h2, h3 { font-family: 'Lora', serif; font-weight: 500; }
+        .container { max-width: 1200px; margin: 0 auto;  }
+
+        /* --- MODERN INTERACTIVE LANG TOGGLE --- */
+        .lang-toggle { text-align: right; padding: 20px; position: relative; z-index: 100; }
+        .lang-toggle button {
+            background: rgba(140, 154, 139, 0.1); border: 1px solid var(--accent-color);
+            padding: 8px 18px; border-radius: 30px; cursor: pointer;
+            color: var(--accent-color); font-family: 'Montserrat', sans-serif;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            backdrop-filter: blur(5px);
+        }
+        .lang-toggle button:hover { 
+            background: var(--accent-color); color: white; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(140, 154, 139, 0.3);
+        }
+
+        header { margin-bottom: 60px; }
+        .date { font-size: 1.2em; letter-spacing: 2px; margin-bottom: 30px; }
+
+        /* --- HERO TEXT WITH FADE-IN ANIMATION --- */
+        .main-title {
+            font-size: 9.2em; 
+            margin: 20px 0 10px 0;
+            line-height: 1;
+            animation: slowFadeIn 1.5s ease-out forwards;
+        }
+        .hero-date-text { font-size: 1.5em; }
+        
+        @keyframes slowFadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MODERN HOVER RSVP BUTTON --- */
+        .rsvp-btn-container { margin-top: 50px; margin-bottom: 50px; }
+        .rsvp-btn {
+            display: inline-block; background-color: var(--accent-color); color: white;
+            text-decoration: none; padding: 18px 45px; font-size: 1.2em; border-radius: 50px; 
+            font-family: 'Lora', serif; 
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 4px 15px rgba(140, 154, 139, 0.2);
+        }
+        .rsvp-btn:hover { 
+            background-color: #727e71; 
+            transform: translateY(-4px); 
+            box-shadow: 0 10px 25px rgba(140, 154, 139, 0.4); 
+        }
+        
+        /* --- Elegant Section Divider --- */
+        .divider {
+            width: 150px; 
+            height: 2px;
+            background-color: var(--accent-color); 
+            opacity: 0.4; 
+            margin: 80px auto; 
+            border-radius: 2px;
+        }
+
+        /* --- FAQ Accordion Styling --- */
+        .faq-section { margin: 80px auto; max-width: 900px; text-align: left; }
+        .faq-item { border-bottom: 1px solid rgba(140, 154, 139, 0.2); padding: 20px 0; transition: all 0.3s ease; }
+        .faq-item:hover { border-bottom: 1px solid var(--accent-color); } 
+        .faq-question {
+            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.4em;
+            color: var(--accent-color); cursor: pointer; display: flex; 
+            justify-content: space-between; align-items: center; list-style: none;
+            transition: color 0.3s ease;
+        }
+        .faq-question:hover { color: #5a6659; }
+        .faq-question::-webkit-details-marker { display: none; }
+        .faq-question::after { content: '+'; font-size: 1.5em; font-weight: 300; transition: transform 0.4s ease; }
+        details[open] .faq-question::after { transform: rotate(45deg); } 
+        .faq-answer { margin-top: 20px; line-height: 1.8; font-size: 1.1em; color: #555; animation: slideDown 0.4s ease-out; }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .footer-note { text-align: center; margin-top: 80px; padding-bottom: 150px; border-top: 1px solid rgba(140, 154, 139, 0.2); padding-top: 60px; }
+
+        /* --- MODERN FROSTED GLASS MODAL --- */
+        #language-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(250, 248, 245, 0.4); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 9999; 
+            transition: opacity 0.5s ease;
+        }
+        .modal-content {
+            background: rgba(255, 255, 255, 0.9); padding: 50px; border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08); max-width: 400px; width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transform: translateY(0);
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .modal-content h2 { margin-top: 0; color: var(--accent-color); font-size: 2.2em; }
+        .modal-content p { margin-bottom: 30px; color: #666; line-height: 1.6; }
+        .lang-choice-btn {
+            display: block; width: 100%; margin-bottom: 15px;
+            background-color: var(--accent-color); color: white; border: none;
+            padding: 16px; font-size: 1.1em; border-radius: 30px;
+            cursor: pointer; font-family: 'Lora', serif; 
+            transition: all 0.3s ease;
+        }
+        .lang-choice-btn:hover { background-color: #727e71; transform: scale(1.02); }
+
+        .pt { display: none; } 
+
+        /* --- SCROLL REVEAL ANIMATION CLASSES --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+       /* --- MOBILE RESPONSIVE FIX --- */
+        @media (max-width: 768px) {
+            header > div { width: 100% !important; padding: 0 10px; box-sizing: border-box; }
+            .main-title { font-size: 12.5vw; margin: 20px 0 5px -3px; white-space: nowrap; }
+            .hero-date-text { font-size: 0.8em; letter-spacing: 1px; }
+            .header-image { margin-top: 30px !important; width: 100%; }
+            .script-text { font-size: 2.8em !important; margin: -10px 0 20px 0 !important; }
+            h2 { font-size: 2.2em !important; }
+            .divider { margin: 50px auto; width: 85%; }
+            .faq-section { padding: 0 15px; margin: 40px auto; }
+            .rsvp-btn { padding: 15px 30px; font-size: 1em; display: block; width: 80%; margin: 0 auto; box-sizing: border-box; }
+            .modal-content { padding: 40px 20px; }
+            .modal-content h2 { font-size: 1.8em !important; }
+            
+            /* SHRINKS FOOTER HEADER AND MAKES IT NARROWER TO WRAP */
+            .footer-note h2 { 
+                font-size: 1.8em !important; 
+                max-width: 80%; 
+                margin: 0 auto 15px auto !important; 
+                line-height: 1.4; 
+            }
+            
+            /* SHRINKS ALL NORMAL PARAGRAPH TEXT ON MOBILE */
+            p { font-size: 1em !important; line-height: 1.6 !important; }
+            
+            /* SHRINKS FAQ QUESTIONS ON MOBILE */
+            .faq-question { font-size: 1.15em !important; }
+			
+			/* MAKES THE VERY LAST LINE OF TEXT MUCH SMALLER ON MOBILE */
+            .footer-note p { 
+                font-size: 0.7em !important; 
+                letter-spacing: 2px !important; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="language-modal">
+        <div class="modal-content">
+            <h2>Welcome / Bem-vindo</h2>
+            <button class="lang-choice-btn" onclick="chooseLanguage('en')">English</button>
+            <button class="lang-choice-btn" onclick="chooseLanguage('pt')">Português</button>
+        </div>
+    </div>
+
+    <div class="lang-toggle">
+        <button onclick="toggleLanguage()">
+            <span class="en">Mudar para Português</span>
+            <span class="pt">Switch to English</span>
+        </button>
+    </div>
+
+    <div class="container">
+       <header style="margin-bottom: 60px; display: flex; flex-direction: column; align-items: center;">
+        <div style="width: fit-content; margin: 0 auto;">
+
+            <h1 class="main-title" style="color:#8C9A8B;">Patricia & André</h1>
+            
+            <div class="en reveal active">
+                <p class="date" style="display: flex; justify-content: space-between; width: 100%; margin: 0; font-weight: 500; font-size: 0.85em; letter-spacing: 2px;">
+                    <span class="hero-date-text">VILA REAL, PORTUGAL</span>
+                    <span class="hero-date-text">2026</span>
+                </p>
+            </div>
+
+            <div class="pt reveal active">
+                <p class="date" style="display: flex; justify-content: space-between; width: 100%; margin: 0; font-weight: 500; font-size: 0.85em; letter-spacing: 2px;">
+                    <span class="hero-date-text">VILA REAL, PORTUGAL</span>
+                    <span class="hero-date-text">2026</span>
+                </p>
+            </div>
+            
+            <img class="header-image reveal active" src="church.png" alt="Sé Catedral de Vila Real" style="display: block; margin: 40px auto 20px auto; max-width: 90%; width: 600px; height: auto; opacity: 0.5;">
+
+        </div>
+    </header>
+
+        <div class="reveal" style="margin: 30px auto 30px auto; text-align: center; max-width: 1100px;">
+            <h2 class="en" style="margin: 0 0 40px 0; font-size: 3.5em; color:#8C9A8B;">Our Wedding Day</h2>
+            <h2 class="pt" style="margin: 0 0 40px 0; font-size: 3.5em; color:#8C9A8B;">O Nosso Casamento</h2>
+            
+            <div style="margin-bottom: 60px;">
+                <p class="en" style="margin: 0; line-height: 2; font-size: 1.3em; color: #444;">
+                    <strong>28.08.2026</strong><br><br>
+					Ceremony at 14:00<br>
+		
+                    Sé Catedral de Vila Real<br>
+                    Av. Carvalho Araújo 89, 5000-657 Vila Real, Portugal<br>
+                    <span style="font-style: italic; color: var(--accent-color); display: inline-block; margin-top: 10px;">Wedding reception to follow</span>
+                </p>
+                <p class="pt" style="margin: 0; line-height: 2; font-size: 1.3em; color: #444;">
+                    <strong>28.08.2026</strong><br><br>
+                    Cerimônia às 14:00 <br>
+					Sé Catedral de Vila Real<br>
+                    Av. Carvalho Araújo 89, 5000-657 Vila Real, Portugal<br>
+                    <span style="font-style: italic; color: var(--accent-color); display: inline-block; margin-top: 10px;">Copo-de-água a seguir</span>
+                </p>
+            </div>
+             
+            <div class="divider"></div>
+            
+            <div class="reveal">
+                 <h2 class="en" style="font-size: 3.5em; margin-bottom:15px; color:#8C9A8B;">RSVP</h2>
+                 <p class="en" style="margin: 0 0 30px 0; line-height: 1.8; font-size: 1.3em; color: #666;">
+                    Your response is requested as soon as you can, no later than 1st July 2026.
+                 </p>
+                 
+                 <h2 class="pt" style="font-size: 3.5em; margin-bottom:15px; color:#8C9A8B;">Confirme a presença (RSVP)</h2>
+                 <p class="pt" style="margin: 0 0 30px 0; line-height: 1.8; font-size: 1.3em; color: #666;">
+                    Precisamos da confirmação final até ao dia 1 de julho de 2026.
+                 </p>
+
+                <div class="rsvp-btn-container">
+                    <a href="rsvp.html" class="rsvp-btn">
+                        <span class="en">RSVP</span>
+                        <span class="pt">RSVP</span>
+                    </a>
+                </div>
+            </div>  
+        </div>
+
+        <div class="divider reveal"></div>
+
+        <div class="faq-section reveal">
+            <h2 class="en" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#8C9A8B;">Frequently Asked Questions</h2>
+            <h2 class="pt" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#8C9A8B;">Perguntas Frequentes</h2>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span class="en">Are the wedding ceremony and the reception at the same venue?</span>
+                    <span class="pt">A cerimônia e o copo-de-água são no mesmo local?</span>
+                </summary>
+                <div class="faq-answer">
+                    <p class="en">No. Please travel to the Church for the ceremony. All guests to follow the bride & groom after the ceremony to the reception venue (a short drive).</p>
+                    <p class="pt">Não. Por favor, dirija-se à Igreja para a cerimônia. Todos os convidados devem seguir os noivos após a cerimônia até ao local do copo-de-água.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span class="en">How can I travel on the day?</span>
+                    <span class="pt">Como posso deslocar-me no dia?</span>
+                </summary>
+                <div class="faq-answer">
+                    <p class="en">The best option is to drive but if you can't do this, Bolt and Uber plus local taxis are available.</p>
+                    <p class="pt">A melhor opção é conduzir mas se tal não for possível, Bolt, Uber e táxis locais estão disponíveis.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span class="en">Is there parking at the reception venue?</span>
+                    <span class="pt">Há estacionamento no local do copo-de-água?</span>
+                </summary>
+                <div class="faq-answer">
+                    <p class="en">Yes!</p>
+                    <p class="pt">Sim!</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span class="en">What's the dress code?</span>
+                    <span class="pt">Qual é o 'dress code'?</span>
+                </summary>
+                <div class="faq-answer">
+                    <p class="en"><strong>Men:</strong> Suits preferably. Please no jeans or trainers.<br><br><strong>Ladies:</strong> Formal dresses. No white.</p>
+                    <p class="pt"><strong>Senhores:</strong> Fato de preferência. Por favor, nada de calças de ganga ou tênis.<br><br><strong>Senhoras:</strong> Vestidos. Por favor, não use branco.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span class="en">Can I bring a plus one?</span>
+                    <span class="pt">Posso levar um acompanhante?</span>
+                </summary>
+                <div class="faq-answer">
+                    <p class="en">No. We want to celebrate with our closest family and friends. If you haven't been given a plus one then please do not bring any extra guests.</p>
+                    <p class="pt">Não. Queremos celebrar com os nossos familiares e amigos mais próximos. Se não recebeu um convite com acompanhante, por favor, não traga convidados extras.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <span class="en">What if I miss the RSVP deadline?</span>
+                    <span class="pt">E se falhar o prazo de confirmação de presença (RSVP)?</span>
+                </summary>
+                <div class="faq-answer">
+                    <p class="en">Please make sure to submit your RSVP by 1st July 2026. If we don't receive your RSVP by this date, we will mark you as not attending.</p>
+                    <p class="pt">Por favor, confirme a sua presença até ao dia 1 de julho de 2026. Caso não recebermos a sua confirmação até esta data, consideraremos a sua ausência.</p>
+                </div>
+            </details>
+        </div>
+        
+        <div class="divider reveal"></div>
+
+        <div class="footer-note reveal">
+            <h2 class="en" style="color: var(--accent-color); margin-bottom: 15px;">We can't wait to celebrate with you!</h2>
+            <h2 class="pt" style="color: var(--accent-color); margin-bottom: 15px;">Estamos ansiosos para celebrar com vocês!</h2>
+            
+            <p style="letter-spacing: 3px; font-size: 1.1em; color: #888; text-transform: uppercase;">Vila Real, Portugal &nbsp;|&nbsp; 28.08.2026</p>
+        </div>
+    </div>
+
+    <script>
+        // --- SAFE Smart Language Logic ---
+        try { window.currentLang = localStorage.getItem('weddingLang'); } 
+        catch(e) { window.currentLang = null; }
+
+        window.setLanguage = function(lang) {
+            document.querySelectorAll('.en').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.pt').forEach(el => el.style.display = 'none');
+            
+            document.querySelectorAll(`.${lang}`).forEach(el => {
+                el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
+            });
+        };
+
+        window.chooseLanguage = function(lang) {
+            try { localStorage.setItem('weddingLang', lang); } catch(e) {}
+            window.currentLang = lang;
+            
+            // Modern fade out for the modal
+            const modal = document.getElementById('language-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => { modal.style.display = 'none'; }, 500);
+            
+            window.setLanguage(lang); 
+        };
+
+        window.toggleLanguage = function() {
+            window.currentLang = window.currentLang === 'en' ? 'pt' : 'en';
+            try { localStorage.setItem('weddingLang', window.currentLang); } catch(e) {}
+            window.setLanguage(window.currentLang);
+        };
+
+        if (!window.currentLang) {
+            document.getElementById('language-modal').style.display = 'flex';
+        } else {
+            document.getElementById('language-modal').style.display = 'none';
+            window.setLanguage(window.currentLang);
+        }
+
+        // --- MODERN SCROLL REVEAL JAVASCRIPT ---
+        function revealOnScroll() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Triggers when element is 100px into the screen
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll(); 
+    </script>
+</body>
+</html>

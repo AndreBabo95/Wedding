@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP Received!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FAF8F5;
+            --text-color: #333333;
+            --accent-color: #8C9A8B; 
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Takes up the full screen height */
+            text-align: center;
+            padding: 20px;
+        }
+        h1 { font-family: 'Lora', serif; font-size: 3.5em; color: var(--accent-color); margin-bottom: 10px; }
+        p { font-size: 1.2em; max-width: 500px; line-height: 1.6; }
+        
+        .home-btn {
+            margin-top: 40px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            font-family: 'Lora', serif;
+            transition: background 0.3s;
+        }
+        .home-btn:hover { background-color: #727e71; }
+        
+        /* Portuguese hidden by default */
+        .pt { display: none; }
+    </style>
+</head>
+<body>
+
+    <h1 class="en">Thank You!</h1>
+    <h1 class="pt">Obrigado!</h1>
+    
+    <p class="en">Your RSVP has been successfully received</p>
+    <p class="pt">A sua confirmação foi recebida com sucesso</p>
+
+    <a href="index.html" class="home-btn">
+        <span class="en">Back to Home</span>
+        <span class="pt">Voltar ao Início</span>
+    </a>
+
+    <script>
+        let currentLang = localStorage.getItem('weddingLang') || (navigator.language.toLowerCase().includes('pt') ? 'pt' : 'en');
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.en').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.pt').forEach(el => el.style.display = 'none');
+            
+            document.querySelectorAll(`.${lang}`).forEach(el => {
+                el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
+            });
+        }
+        
+        setLanguage(currentLang);
+    </script>
+</body>
+</html>
