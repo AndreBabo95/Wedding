@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Ms+Madi&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -46,11 +48,15 @@
 
         /* --- HERO TEXT WITH FADE-IN ANIMATION --- */
         .main-title {
-            font-size: 9.2em; 
-            margin: 20px 0 10px 0;
-            line-height: 1;
-            animation: slowFadeIn 1.5s ease-out forwards;
-        }
+    font-family: 'Ms Madi', cursive !important; /* Changed from Lora to Ms Madi */
+    font-size: 10em; /* Increased slightly for legibility */
+    font-weight: 400;
+    margin: 20px 0 -15px 0;
+    line-height: 1;
+    color: #000000 !important;
+    animation: slowFadeIn 1.5s ease-out forwards;
+}
+
         .hero-date-text { font-size: 1.5em; }
         
         @keyframes slowFadeIn {
@@ -104,7 +110,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .footer-note { text-align: center; margin-top: 80px; padding-bottom: 150px; border-top: 1px solid rgba(140, 154, 139, 0.2); padding-top: 60px; }
+        .footer-note { text-align: center; margin-top: 80px; padding-bottom: 10px; border-top: 1px solid rgba(140, 154, 139, 0.2); padding-top: 60px; }
 
         /* --- MODERN FROSTED GLASS MODAL --- */
         #language-modal {
@@ -180,7 +186,8 @@
                 font-size: 0.7em !important; 
                 letter-spacing: 2px !important; 
             }
-			/* 1. Add padding to the container for side-spacing */
+			@media (max-width: 768px) {
+    /* 1. Add padding to the container for side-spacing */
     .container { 
         padding-left: 20px !important; 
         padding-right: 20px !important; 
@@ -207,6 +214,8 @@
         padding: 0 !important; 
         margin: 0 auto !important;
     }
+}
+
         }
     </style>
 </head>
@@ -228,7 +237,7 @@
     </div>
 
     <div class="container">
-       <header style="margin-bottom: 60px; display: flex; flex-direction: column; align-items: center;">
+       <header style="margin-bottom: 10px; display: flex; flex-direction: column; align-items: center;">
         <div style="width: fit-content; margin: 0 auto;">
 
             <h1 class="main-title" style="color:#8C9A8B;">Patricia & André</h1>
@@ -247,19 +256,19 @@
                 </p>
             </div>
             
-            <img class="header-image reveal active" src="church.png" alt="Sé Catedral de Vila Real" style="display: block; margin: 40px auto 20px auto; max-width: 90%; width: 600px; height: auto; opacity: 0.5;">
+            <img class="header-image reveal active" src="church.png" alt="Sé Catedral de Vila Real" style="display: block; margin: 40px auto 0 auto; max-width: 90%; width: 600px; height: auto; opacity: 0.5;">
 
         </div>
     </header>
 
-        <div class="reveal" style="margin: 30px auto 30px auto; text-align: center; max-width: 1100px;">
+        <div class="reveal" style="margin: 10px auto 10px auto; text-align: center; max-width: 1100px;">
             <h2 class="en" style="margin: 0 0 40px 0; font-size: 3.5em; color:#8C9A8B;">Our Wedding Day</h2>
             <h2 class="pt" style="margin: 0 0 40px 0; font-size: 3.5em; color:#8C9A8B;">O Nosso Casamento</h2>
             
             <div style="margin-bottom: 60px;">
                 <p class="en" style="margin: 0; line-height: 2; font-size: 1.3em; color: #444;">
                     <strong>28.08.2026</strong><br><br>
-					Ceremony at 13:30<br><br>
+					<span style="padding-bottom:20px">Ceremony at 13:30</span><br>
 		
                     Sé Catedral de Vila Real<br>
                     Av. Carvalho Araújo 89, 5000-657 Vila Real, Portugal<br>
