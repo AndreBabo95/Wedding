@@ -180,10 +180,32 @@
                 font-size: 0.7em !important; 
                 letter-spacing: 2px !important; 
             }
-			 .container { 
+			/* 1. Add padding to the container for side-spacing */
+    .container { 
         padding-left: 20px !important; 
         padding-right: 20px !important; 
-        box-sizing: border-box; 
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    /* 2. FORCE center the title and remove the negative left margin */
+        .main-title { 
+        font-size: 12.5vw !important; 
+        margin: 20px 0 5px 0 !important; /* Reset all margins to 0 */
+        padding: 0 !important;
+        text-align: center !important;
+        width: 100% !important;
+        display: flex !important; /* Use flex to force centering */
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    
+    /* 3. Ensure the header wrapper doesn't have offset padding */
+    header > div { 
+        width: 100% !important; 
+        padding: 0 !important; 
+        margin: 0 auto !important;
     }
         }
     </style>
