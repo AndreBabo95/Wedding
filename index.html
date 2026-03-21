@@ -12,7 +12,7 @@
         :root {
             --bg-color: #FAF8F5;
             --text-color: #333333;
-            --accent-color: #8C9A8B; 
+            --accent-color: #7A1212; 
         }
         
         body {
@@ -53,7 +53,7 @@
     font-weight: 400;
     margin: 20px 0 -15px 0;
     line-height: 1;
-    color: #000000 !important;
+    color: #7A1212 !important;
     animation: slowFadeIn 1.5s ease-out forwards;
 }
 
@@ -67,17 +67,25 @@
         /* --- MODERN HOVER RSVP BUTTON --- */
         .rsvp-btn-container { margin-top: 50px; margin-bottom: 50px; }
         .rsvp-btn {
-            display: inline-block; background-color: var(--accent-color); color: white;
-            text-decoration: none; padding: 18px 45px; font-size: 1.2em; border-radius: 50px; 
-            font-family: 'Lora', serif; 
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 4px 15px rgba(140, 154, 139, 0.2);
-        }
-        .rsvp-btn:hover { 
-            background-color: #727e71; 
-            transform: translateY(-4px); 
-            box-shadow: 0 10px 25px rgba(140, 154, 139, 0.4); 
-        }
+    display: inline-block; 
+    background-color: var(--accent-color); 
+    color: white;
+    text-decoration: none; 
+    padding: 18px 45px; 
+    font-size: 1.2em; 
+    border-radius: 50px; 
+    font-family: 'Lora', serif; 
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth reactive feel */
+    box-shadow: 0 4px 15px rgba(122, 18, 18, 0.2); /* Soft red shadow */
+}
+
+.rsvp-btn:hover { 
+    background-color: #5e0d0d; /* Slightly darker red on hover */
+    transform: translateY(-4px) scale(1.02); /* Lifts up and grows slightly */
+    box-shadow: 0 10px 25px rgba(122, 18, 18, 0.35); /* Shadow deepens on hover */
+    color: white;
+}
+
         
         /* --- Elegant Section Divider --- */
         .divider {
@@ -95,7 +103,7 @@
         .faq-item:hover { border-bottom: 1px solid var(--accent-color); } 
         .faq-question {
             font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.4em;
-            color: var(--accent-color); cursor: pointer; display: flex; 
+            color: #000000; cursor: pointer; display: flex; 
             justify-content: space-between; align-items: center; list-style: none;
             transition: color 0.3s ease;
         }
@@ -156,7 +164,7 @@
        /* --- MOBILE RESPONSIVE FIX --- */
         @media (max-width: 768px) {
             header > div { width: 100% !important; padding: 0 10px; box-sizing: border-box; }
-            .main-title { font-size: 13.5vw; margin: 20px 0 5px -3px; white-space: nowrap; }
+            .main-title { font-size: 12.5vw; margin: 20px 0 5px -3px; white-space: nowrap; }
             .hero-date-text { font-size: 0.8em; letter-spacing: 1px; }
             .header-image { margin-top: 30px !important; width: 100%; }
             .script-text { font-size: 2.8em !important; margin: -10px 0 20px 0 !important; }
@@ -220,6 +228,14 @@
     </style>
 </head>
 <body>
+<!-- Password Overlay -->
+<div id="password-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(250, 248, 245, 0.95); backdrop-filter: blur(15px); z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+    <h2 style="font-family: 'Lora', serif; color: #7A1212; margin-bottom: 20px;">Welcome / Bem-vindo</h2>
+    <p style="font-family: 'Montserrat', sans-serif; color: #666; margin-bottom: 30px;">Please enter the password:<br><em>Por favor, insira a password:</em></p>
+    <input type="password" id="wedding-pass" style="padding: 12px; border: 1px solid #7A1212; border-radius: 30px; text-align: center; width: 200px; font-family: 'Montserrat', sans-serif;">
+    <button onclick="checkPassword()" style="margin-top: 20px; background: #7A1212; color: white; border: none; padding: 12px 30px; border-radius: 30px; cursor: pointer; font-family: 'Lora', serif;">Enter / Entrar</button>
+    <p id="pass-error" style="color: #d9534f; margin-top: 15px; display: none; font-size: 0.9em;">Incorrect password / Password incorreto</p>
+</div>
 
     <div id="language-modal">
         <div class="modal-content">
@@ -240,7 +256,7 @@
        <header style="margin-bottom: 10px; display: flex; flex-direction: column; align-items: center;">
         <div style="width: fit-content; margin: 0 auto;">
 
-            <h1 class="main-title" style="color:#8C9A8B;">Patricia & André</h1>
+            <h1 class="main-title" style="color:;">Patricia & André</h1>
             
             <div class="en reveal active">
                 <p class="date" style="display: flex; justify-content: space-between; width: 100%; margin: 0; font-weight: 500; font-size: 0.85em; letter-spacing: 2px;">
@@ -262,36 +278,35 @@
     </header>
 
         <div class="reveal" style="margin: 10px auto 10px auto; text-align: center; max-width: 1100px;">
-            <h2 class="en" style="margin: 0 0 40px 0; font-size: 3.5em; color:#8C9A8B;">Our Wedding Day</h2>
-            <h2 class="pt" style="margin: 0 0 40px 0; font-size: 3.5em; color:#8C9A8B;">O Nosso Casamento</h2>
+            <h2 class="en" style="margin: 0 0 40px 0; font-size: 3.5em; color:#7A1212;">Our Wedding Day</h2>
+            <h2 class="pt" style="margin: 0 0 40px 0; font-size: 3.5em; color:#7A1212;">O Nosso Casamento</h2>
             
             <div style="margin-bottom: 60px;">
                 <p class="en" style="margin: 0; line-height: 2; font-size: 1.3em; color: #444;">
                     <strong>28.08.2026</strong><br><br>
-					<span style="padding-bottom:20px">Ceremony at 13:30</span><br>
-		
+					<span style="padding-bottom:20px">Ceremony at 14:00</span><br>
                     Sé Catedral de Vila Real<br>
                     Av. Carvalho Araújo 89, 5000-657 Vila Real, Portugal<br>
                     <span style="font-style: italic; color: var(--accent-color); display: inline-block; margin-top: 10px;">Wedding reception to follow</span>
                 </p>
                 <p class="pt" style="margin: 0; line-height: 2; font-size: 1.3em; color: #444;">
                     <strong>28.08.2026</strong><br><br>
-                    Cerimônia às 13:30 <br><br>
+                    <span style="padding-bottom:20px">Cerimônia às 14:00</span> <br>
 					Sé Catedral de Vila Real<br>
                     Av. Carvalho Araújo 89, 5000-657 Vila Real, Portugal<br>
-                    <span style="font-style: italic; color: var(--accent-color); display: inline-block; margin-top: 10px;">Copo de água a seguir</span>
+                    <span style="font-style: italic; color: var(--accent-color); display: inline-block; margin-top: 10px;">Copo-de-água a seguir</span>
                 </p>
             </div>
              
             <div class="divider"></div>
             
             <div class="reveal">
-                 <h2 class="en" style="font-size: 3.5em; margin-bottom:15px; color:#8C9A8B;">RSVP</h2>
+                 <h2 class="en" style="font-size: 3.5em; margin-bottom:15px; color:#7A1212;">RSVP</h2>
                  <p class="en" style="margin: 0 0 30px 0; line-height: 1.8; font-size: 1.3em; color: #666;">
                     Your response is requested as soon as you can, no later than 1st July 2026.
                  </p>
                  
-                 <h2 class="pt" style="font-size: 3.5em; margin-bottom:15px; color:#8C9A8B;">Confirme a presença (RSVP)</h2>
+                 <h2 class="pt" style="font-size: 3.5em; margin-bottom:15px; color:#7A1212;">Confirme a presença (RSVP)</h2>
                  <p class="pt" style="margin: 0 0 30px 0; line-height: 1.8; font-size: 1.3em; color: #666;">
                     Precisamos da confirmação final até ao dia 1 de julho de 2026.
                  </p>
@@ -308,13 +323,13 @@
         <div class="divider "></div>
 
         <div class="faq-section reveal">
-            <h2 class="en" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#8C9A8B;">Frequently Asked Questions</h2>
-            <h2 class="pt" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#8C9A8B;">Perguntas Frequentes</h2>
+            <h2 class="en" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#7A1212;">Frequently Asked Questions</h2>
+            <h2 class="pt" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#7A1212;">Perguntas Frequentes</h2>
 
             <details class="faq-item">
                 <summary class="faq-question">
                     <span class="en">Are the wedding ceremony and the reception at the same venue?</span>
-                    <span class="pt">A cerimônia e o copo de água são no mesmo local?</span>
+                    <span class="pt">A cerimônia e o copo-de-água são no mesmo local?</span>
                 </summary>
                 <div class="faq-answer">
                     <p class="en">No. Please travel to the Church for the ceremony. All guests to follow the bride & groom after the ceremony to the reception venue (a short drive).</p>
@@ -350,8 +365,8 @@
                     <span class="pt">Qual é o 'dress code'?</span>
                 </summary>
                 <div class="faq-answer">
-                    <p class="en"><strong>Men:</strong> Suits preferably. Please no jeans or trainers.<br><br><strong>Ladies:</strong> Cocktail attire. No white.</p>
-                    <p class="pt"><strong>Senhores:</strong> Fato de preferência. Por favor, nada de calças de ganga ou tênis.<br><br><strong>Senhoras:</strong> Por favor, não use branco.</p>
+                    <p class="en"><strong>Men:</strong> Suits preferably. Please no jeans or trainers.<br><br><strong>Ladies:</strong> Formal dresses. No white.</p>
+                    <p class="pt"><strong>Senhores:</strong> Fato de preferência. Por favor, nada de calças de ganga ou tênis.<br><br><strong>Senhoras:</strong> Vestidos. Por favor, não use branco.</p>
                 </div>
             </details>
 
@@ -442,6 +457,29 @@
         }
         window.addEventListener("scroll", revealOnScroll);
         revealOnScroll(); 
+		
+    function checkPassword() {
+        const pass = document.getElementById('wedding-pass').value;
+        // CHANGE YOUR PASSWORD HERE
+        const correctPass = "vilareal2026"; 
+
+        if (pass === correctPass) {
+            // Hide the overlay and save that they logged in
+            document.getElementById('password-overlay').style.display = 'none';
+            sessionStorage.setItem('unlocked', 'true');
+        } else {
+            document.getElementById('pass-error').style.display = 'block';
+        }
+    }
+
+    // Check if they already unlocked it this session
+    window.onload = function() {
+        if (sessionStorage.getItem('unlocked') === 'true') {
+            document.getElementById('password-overlay').style.display = 'none';
+        }
+    };
+
+
     </script>
 </body>
 </html>
