@@ -117,6 +117,20 @@
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+		
+/* FAQ Table - Text Only Hover Effect */
+.faq-question:hover {
+    color: #747474 !important; /* Elegant light grey/charcoal */
+    background-color: transparent !important; /* Ensures no background highlight appears */
+    transition: color 0.3s ease; /* Makes the transition smooth */
+}
+
+/* Optional: Ensures the "+" icon also matches the hover color if desired */
+.faq-question:hover::after {
+    color: #747474 !important;
+}
+
+
         
         .footer-note { text-align: center; margin-top: 80px; padding-bottom: 10px; border-top: 1px solid rgba(140, 154, 139, 0.2); padding-top: 60px; }
 
@@ -141,12 +155,14 @@
         .modal-content p { margin-bottom: 30px; color: #666; line-height: 1.6; }
         .lang-choice-btn {
             display: block; width: 100%; margin-bottom: 15px;
-            background-color: var(--accent-color); color: white; border: none;
+            color: black; border: none;
             padding: 16px; font-size: 1.1em; border-radius: 30px;
             cursor: pointer; font-family: 'Lora', serif; 
             transition: all 0.3s ease;
         }
-        .lang-choice-btn:hover { background-color: #727e71; transform: scale(1.02); }
+        .lang-choice-btn:hover { background-color: #7A1212; 
+								 transform: scale(1.02);
+								 color: white;}
 
         .pt { display: none; } 
 
@@ -224,8 +240,14 @@
     }
 }
 
+
+
+
+
         }
     </style>
+	<!-- Favicon Link -->
+<link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 <!-- Password Overlay -->
@@ -283,14 +305,14 @@
             
             <div style="margin-bottom: 60px;">
                 <p class="en" style="margin: 0; line-height: 2; font-size: 1.3em; color: #444;">
-                    <strong>28.08.2026</strong><br><br>
-					<span style="padding-bottom:20px">Ceremony at 14:00</span><br>
+                    <strong>28.08.2026</strong><br>
+					<p style="margin-bottom: 15px;">Ceremony Time: 14:00</p><br>
                     Sé Catedral de Vila Real<br>
                     Av. Carvalho Araújo 89, 5000-657 Vila Real, Portugal<br>
                     <span style="font-style: italic; color: var(--accent-color); display: inline-block; margin-top: 10px;">Wedding reception to follow</span>
                 </p>
                 <p class="pt" style="margin: 0; line-height: 2; font-size: 1.3em; color: #444;">
-                    <strong>28.08.2026</strong><br><br>
+                    <strong>28.08.2026</strong><br>
                     <span style="padding-bottom:20px">Cerimônia às 14:00</span> <br>
 					Sé Catedral de Vila Real<br>
                     Av. Carvalho Araújo 89, 5000-657 Vila Real, Portugal<br>
@@ -369,6 +391,17 @@
                     <p class="pt">Não. Queremos celebrar com os nossos familiares e amigos mais próximos. Se não recebeu um convite com acompanhante, por favor, não traga convidados extras.</p>
                 </div>
             </details>
+			
+			<details class="faq-item">
+                <summary class="faq-question">
+                    <span class="en">Do you have a gift registry?</span>
+                    <span class="pt">Existe uma lista de presentes?/span>
+                </summary>
+                <div class="faq-answer">
+                    <p class="en"></p>
+                    <p class="pt"></p>
+                </div>
+            </details>
 
             <details class="faq-item">
                 <summary class="faq-question">
@@ -387,7 +420,8 @@
             <h2 class="en" style="color: var(--accent-color); margin-bottom: 15px;">We can't wait to celebrate with you!</h2>
             <h2 class="pt" style="color: var(--accent-color); margin-bottom: 15px;">Estamos ansiosos para celebrar com vocês!</h2>
             
-            <p style="letter-spacing: 3px; font-size: 1.1em; color: #000000; text-transform: uppercase;">Vila Real, Portugal &nbsp;|&nbsp; 28.08.2026</p><br><br>
+            <p style="letter-spacing: 3px; font-size: 1.1em; color: #000000; text-transform: uppercase;">Vila Real, Portugal &nbsp;|&nbsp; 28.08.2026</p>
+			<img class="header-image reveal active" src="favicon.png" style="display: block; margin: 40px auto 0 auto; height: 50px; opacity: 0.5;">
 			<p style="letter-spacing: 3px; font-size: 0.6em; color: #888; text-transform: uppercase;">Made with love by Patricia and andre</p>
 			
         </div>
