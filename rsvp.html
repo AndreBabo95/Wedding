@@ -10,7 +10,7 @@
         :root {
             --bg-color: #FAF8F5;
             --text-color: #333333;
-            --accent-color: #8C9A8B; 
+            --accent-color: #7A1212; 
             --box-bg: #ffffff;
         }
         
@@ -58,11 +58,11 @@
 
 
         button.action-btn {
-            width: 100%; background-color: var(--accent-color); color: white;
+            width: 100%; color: black;
             border: none; padding: 15px; font-size: 1.1em; border-radius: 5px;
             cursor: pointer; font-family: 'Lora', serif; transition: background 0.3s;
         }
-        button.action-btn:hover { background-color: #727e71; }
+        button.action-btn:hover { background-color: #7A1212; color: white; }
 
         .member-rsvp-group { background: #f9f9f9; padding: 10px 15px; border-radius: 5px; border: 1px solid #eee; }
         .member-row {
@@ -80,6 +80,8 @@
         #error-msg { display: none; color: #d9534f; margin-top: 15px; text-align: center; font-weight: 600; }
         
     </style>
+	<!-- Favicon Link -->
+<link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
@@ -166,6 +168,8 @@
                     <span class="pt">Enviar Confirmação</span>
                 </button>
             </form>
+			<img class="header-image reveal active" src="favicon.png" style="display: block; margin: 40px auto 0 auto; height: 50px; opacity: 0.5;">
+			<p style="letter-spacing: 3px; font-size: 0.6em; color: #888; text-transform: uppercase;">Made with love by Patricia and andre</p>
         </div>
     </div>
 
@@ -173,7 +177,7 @@
         // ==========================================
         // PASTE YOUR GOOGLE WEB APP URL RIGHT HERE:
         // ==========================================
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxQ18Md_Gq6unC4rRnrGuqRVt0bpLw7SjDCOvf5FgUnx9PqLFOD92gHlEQ4yEiAUWGpNw/exec"; 
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyKZf49DjQ8f_ItnmQ2bVtKs-3fpV8a0zjjxx9aLrUqGrhrWDYIYMHdg3zErZZrOfR2Ww/exec"; 
 
         // --- Smart Language Logic (Memory) ---
         let currentLang = localStorage.getItem('weddingLang') || (navigator.language.toLowerCase().includes('pt') ? 'pt' : 'en');
