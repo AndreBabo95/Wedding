@@ -183,7 +183,100 @@
 		}
 		
 		
-		
+		/* Forces the 3 columns to stay side-by-side on ALL screens */
+.horizontal-timeline {
+    display: flex !important;
+    flex-direction: row !important; /* Prevents stacking */
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    margin-top: 25px;
+    overflow-x: auto; /* Allows swiping if the screen is very small */
+    padding-bottom: 10px;
+}
+
+.timeline-column {
+    flex: 1; /* Makes all three equal width */
+    min-width: 30%; /* Ensures they don't get too squashed */
+    text-align: center;
+}
+
+/* Headers for the 3 sections */
+.timeline-column h4 {
+    font-size: 0.9em; /* Slightly smaller to fit side-by-side on mobile */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Image styling */
+.timeline-img-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+/* Mobile Tweak: Keeps text small so they fit */
+@media (max-width: 480px) {
+    .timeline-column h4 {
+        font-size: 0.7em !important;
+    }
+}
+
+
+
+/* Force horizontal layout only */
+.horizontal-timeline {
+    display: flex !important;
+    flex-direction: row !important; 
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.timeline-column {
+    flex: 0 0 30%; /* Keeps columns exactly 30% wide */
+    max-width: 120px; /* Limits how big the sections can get on desktop */
+}
+
+/* Image Size & Uniformity */
+.timeline-img-box img {
+    width: 150px !important;  /* Fixed small width */
+    height: 150px !important; /* Fixed small height */
+    object-fit: cover;       /* Ensures images aren't squished */
+    border-radius: 50%;      /* Optional: Makes them circular (change to 10px for square) */
+    margin: 0 auto 10px auto;
+    display: block;
+}
+
+.timeline-column h4 {
+    font-size: 0.8em !important;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    min-height: 35px; /* Keeps headers aligned if one wraps to 2 lines */
+}
+
+.timeline-text {
+    font-size: 0.7em !important;
+    line-height: 1.3;
+    margin-top: 5px !important;
+}
+
+/* Mobile Tweak: Ensure they stay inline on iPhone */
+@media (max-width: 768px) {
+    .horizontal-timeline {
+        gap: 8px;
+    }
+    .timeline-img-box img {
+        width: 60px !important; /* Even smaller for mobile screens */
+        height: 60px !important;
+    }
+}
+
 		
 		
 		
@@ -360,6 +453,47 @@
         <div class="reveal" style="margin: 10px auto 10px auto; text-align: center; max-width: 1100px;">
             <h2 class="en header" style="margin: 0 0 40px 0; font-size: 3.5em; color:#7A1212;">Our Wedding Day</h2>
             <h2 class="pt header" style="margin: 0 0 40px 0; font-size: 3.5em; color:#7A1212;">O Nosso Casamento</h2>
+			
+			<p style="margin-bottom: 20px;"><strong style="font-size: 2em;">28.08.2026</strong></p>
+		<div class="horizontal-timeline">
+			<!-- Section 1: Ceremony -->
+			<div class="timeline-column">
+				<h4 class="en">Ceremony</h4>
+				<h4 class="pt">Cerimónia</h4>
+				<div class="timeline-img-box">
+					<img src="ceremony.png" alt="Ceremony">
+				</div>
+				<!-- Added Text Below -->
+				<p class="en timeline-text">The ceremony will take place at the Cathedral, followed by a short walk.</p>
+				<p class="pt timeline-text">A cerimónia terá lugar na Sé Catedral, seguida de uma curta caminhada.</p>
+			</div>
+
+			<!-- Section 2: Canapes -->
+			<div class="timeline-column">
+				<h4 class="en">Canapes + Cocktails</h4>
+				<h4 class="pt">Canapés e Cocktails</h4>
+				<div class="timeline-img-box">
+					<img src="cocktails.png" alt="Cocktails">
+				</div>
+				<!-- Added Text Below -->
+				<p class="en timeline-text">Enjoy a selection of local appetizers and drinks in the garden.</p>
+				<p class="pt timeline-text">Desfrute de uma seleção de aperitivos e bebidas regionais no jardim.</p>
+			</div>
+
+			<!-- Section 3: Dinner -->
+			<div class="timeline-column">
+				<h4 class="en">Dinner + Dancing</h4>
+				<h4 class="pt">Jantar e Baile</h4>
+				<div class="timeline-img-box">
+					<img src="dinner.jpg" alt="Dinner">
+				</div>
+				<!-- Added Text Below -->
+				<p class="en timeline-text">A formal dinner will be served, followed by a night of celebration.</p>
+				<p class="pt timeline-text">Será servido um jantar formal, seguido de uma noite de celebração.</p>
+			</div>
+		</div>
+
+
             
             <!-- Wrapper for the English version -->
 			<div class="en" style="margin: 0; line-height: 2;">
