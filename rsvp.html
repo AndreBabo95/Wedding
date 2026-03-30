@@ -111,55 +111,6 @@
     font-size: 0.9em;
     -webkit-appearance: none;
 }
-/* 1. PILL SHAPE FOR TEXT INPUTS ONLY */
-input, 
-input[type="tel"], 
-textarea {
-    border-radius: 30px !important; /* Matches your button roundness */
-    padding: 12px 20px !important;  /* Extra space on sides for the curve */
-    border: 1px solid #ccc;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 16px !important;      /* FIXED: Prevents iPhone auto-zoom */
-    -webkit-appearance: none;        /* FIXED: Stops iPhone blue styling */
-    appearance: none;
-    background-color: white;
-}
-
-/* 2. PROTECT THE YES/NO BUTTONS (Radio Buttons) */
-/* This prevents them from trying to become 100% wide pill boxes */
-input[type="radio"] {
-    -webkit-appearance: radio !important; /* Forces standard circle look */
-    appearance: radio !important;
-    width: 20px !important;               /* Fixed size so they don't stretch */
-    height: 20px !important;
-    margin-right: 8px !important;
-    cursor: pointer;
-    flex-shrink: 0;                       /* Stops them from squishing */
-}
-
-/* 3. SIDE-BY-SIDE LAYOUT FOR GUEST NAMES */
-.member-row {
-    display: flex !important;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #eee;
-}
-
-.radio-options {
-    display: flex !important;
-    gap: 15px;
-}
-
-.radio-options label {
-    display: flex !important;
-    align-items: center;
-    font-size: 1em; /* Mobile size requirement */
-    cursor: pointer;
-    white-space: nowrap;
-}
 
 
 		
