@@ -81,11 +81,14 @@
 		
 	.action-btn {
     /* 1. Removes the blue flash when you tap the button */
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent !important;
 
     /* 2. Forces iOS to use your red color instead of system blue */
-    -webkit-appearance: none;
-    appearance: none;
+    -webkit-appearance: none !important; 
+    appearance: none !important;
+	
+	/* Ensure your red background is forced */
+    background-color: #7A1212 !important;
         }
     </style>
 	<!-- Favicon Link -->
