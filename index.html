@@ -107,11 +107,11 @@
             justify-content: space-between; align-items: center; list-style: none;
             transition: color 0.3s ease;
         }
-        .faq-question:hover { color: #5a6659; }
+        
         .faq-question::-webkit-details-marker { display: none; }
         .faq-question::after { content: '+'; font-size: 1.5em; font-weight: 300; transition: transform 0.4s ease; }
         details[open] .faq-question::after { transform: rotate(45deg); } 
-        .faq-answer { margin-top: 20px; line-height: 1.8; font-size: 1.1em; color: #555; animation: slideDown 0.4s ease-out; }
+        .faq-answer { margin-top: 20px; line-height: 1.8; font-size: 1.1em; animation: slideDown 0.4s ease-out; }
 
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
@@ -120,7 +120,6 @@
 		
 /* FAQ Table - Text Only Hover Effect */
 .faq-question:hover {
-    color: #747474 !important; /* Elegant light grey/charcoal */
     background-color: transparent !important; /* Ensures no background highlight appears */
     transition: color 0.3s ease; /* Makes the transition smooth */
 }
@@ -176,6 +175,12 @@
             opacity: 1;
             transform: translateY(0);
         }
+		
+				/* --- Desktop View (Default) --- */
+		.en, .pt {
+			font-size: 1.4em;
+			line-height: 1.6; /* Adds a bit of breathing room between lines */
+		}
 
        /* --- MOBILE RESPONSIVE FIX --- */
         @media (max-width: 768px) {
@@ -210,7 +215,7 @@
                 font-size: 0.7em !important; 
                 letter-spacing: 2px !important; 
             }
-			@media (max-width: 768px) {
+			
     /* 1. Add padding to the container for side-spacing */
     .container { 
         padding-left: 20px !important; 
@@ -240,24 +245,40 @@
     }
 			/* Removes default iOS blue styling and rounded corners */
 		button, 
-		input[type="button"], 
-		input[type="submit"] {
-			-webkit-appearance: none; /* Disables native iOS button look */
-			appearance: none;
-			border-radius: 0;         /* Removes forced iOS rounding if desired */
-			color: inherit;           /* Ensures it doesn't default to blue text */
-			background-color: #7A1212 !important; /* Force your deep red theme */
+			input[type="button"], 
+			input[type="submit"] {
+				/* This is the only line that fixes the "iPhone Blue" look */
+				-webkit-appearance: none; 
+				appearance: none;
+				
+				/* This ensures the button keeps its sharp corners if you have them */
+				border-radius: 0; 
+			}
+		/* Fixes header image proportions on mobile */
+				.heart {
+			/* Adjust '200px' to the exact size you like on desktop */
+			width: 40px !important; 
+			max-width: 80% !important; /* Ensures it doesn't break on very small phones */
+			height: auto !important;   /* Keeps proportions perfect */
+			display: block !important;
+			margin: 0 auto 20px auto !important; /* Centers the image and adds space below */
 		}
 
-		/* Specifically target the search button if it's still stubborn */
-		#step1 button {
-			color: #ffffff !important; /* Force white text */
-			background-color: #7A1212 !important;
+		.en, .pt {
+        font-size: 1em !important;
+        line-height: 1.5;
 		}
+		
+		.header{
+		font-size: 1.7em !important;
+        line-height: 1.5;
+		}
+	
+
 
 }
 
-}
+
     </style>
 	<!-- Favicon Link -->
 <link rel="icon" type="image/png" href="favicon.png">
@@ -313,11 +334,11 @@
     </header>
 
         <div class="reveal" style="margin: 10px auto 10px auto; text-align: center; max-width: 1100px;">
-            <h2 class="en" style="margin: 0 0 40px 0; font-size: 3.5em; color:#7A1212;">Our Wedding Day</h2>
-            <h2 class="pt" style="margin: 0 0 40px 0; font-size: 3.5em; color:#7A1212;">O Nosso Casamento</h2>
+            <h2 class="en header" style="margin: 0 0 40px 0; font-size: 3.5em; color:#7A1212;">Our Wedding Day</h2>
+            <h2 class="pt header" style="margin: 0 0 40px 0; font-size: 3.5em; color:#7A1212;">O Nosso Casamento</h2>
             
             <!-- Wrapper for the English version -->
-			<div class="en" style="margin: 0; line-height: 2; font-size: 1.3em; color: #444;">
+			<div class="en" style="margin: 0; line-height: 2;">
 				<p style="margin-bottom: 20px;"><strong style="font-size: 1.1em;">28.08.2026</strong></p>
 				<p>Ceremony Time: 14:00</p>
 				<p>Sé Catedral de Vila Real<br>
@@ -326,7 +347,7 @@
 			</div>
 
 			<!-- Wrapper for the Portuguese version -->
-			<div class="pt" style="margin: 0; line-height: 2; font-size: 1.3em; color: #444;">
+			<div class="pt" style="margin: 0; line-height: 2;">
 				<p style="margin-bottom: 20px;"><strong style="font-size: 1.1em;">28.08.2026</strong></p>
 				<p>Hora da Cerimónia: 14:00</p>
 				<p>Sé Catedral de Vila Real<br>
@@ -338,13 +359,13 @@
             <div class="divider"></div>
             
             <div class="reveal">
-                 <h2 class="en" style="font-size: 3.5em; margin-bottom:15px; color:#7A1212;">RSVP</h2>
-                 <p class="en" style="margin: 0 0 30px 0; line-height: 1.8; font-size: 1.3em; color: #666;">
+                 <h2 class="en header" style="font-size: 3.5em; margin-bottom:15px; color:#7A1212;">RSVP</h2>
+                 <p class="en" style="margin: 0 0 30px 0; line-height: 1.8;">
                     Your response is requested as soon as you can, no later than 1st July 2026.
                  </p>
                  
                  <h2 class="pt" style="font-size: 3.5em; margin-bottom:15px; color:#7A1212;">Confirme a presença (RSVP)</h2>
-                 <p class="pt" style="margin: 0 0 30px 0; line-height: 1.8; font-size: 1.3em; color: #666;">
+                 <p class="pt" style="margin: 0 0 30px 0; line-height: 1.8;">
                     Precisamos da confirmação final até ao dia 1 de julho de 2026.
                  </p>
 
@@ -360,8 +381,8 @@
         <div class="divider "></div>
 
         <div class="faq-section reveal">
-            <h2 class="en" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#7A1212;">Frequently Asked Questions</h2>
-            <h2 class="pt" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#7A1212;">Perguntas Frequentes</h2>
+            <h2 class="en header" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#7A1212;">Frequently Asked Questions</h2>
+            <h2 class="pt header" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#7A1212;">Perguntas Frequentes</h2>
 
             <details class="faq-item">
                 <summary class="faq-question">
@@ -436,7 +457,7 @@
             <h2 class="pt" style="color: var(--accent-color); margin-bottom: 15px;">Estamos ansiosos para celebrar com vocês!</h2>
             
             <p style="letter-spacing: 3px; font-size: 1.1em; color: #000000; text-transform: uppercase;">Vila Real, Portugal &nbsp;|&nbsp; 28.08.2026</p>
-			<img class="header-image reveal active" src="favicon.png" style="display: block; margin: 40px auto 0 auto; height: 50px; opacity: 0.5;">
+			<img class="header-image reveal active heart" src="favicon.png" style="display: block; margin: 40px auto 0 auto; height: 50px; opacity: 0.5;">
 			<p style="letter-spacing: 3px; font-size: 0.6em; color: #888; text-transform: uppercase;">Made with love by Patricia and andre</p>
 			
         </div>
