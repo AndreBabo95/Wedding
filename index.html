@@ -263,7 +263,7 @@
 		/* Fixes header image proportions on mobile */
 				.heart {
 			/* Adjust '200px' to the exact size you like on desktop */
-			width: 40px !important; 
+			width: 20px !important; 
 			max-width: 80% !important; /* Ensures it doesn't break on very small phones */
 			height: auto !important;   /* Keeps proportions perfect */
 			display: block !important;
@@ -284,6 +284,21 @@
 		padding-top: 10px;
 		margin-top: 10px;
 		}
+		
+		.header-image.reveal.active {
+        /* Matches your desktop inline style: 40px top, 0px bottom */
+        margin: 40px auto 0 auto !important; 
+        
+        /* Ensures no hidden "inline" space is added under the image */
+        display: block !important;
+        vertical-align: middle;
+    }
+
+    /* Target the text immediately following the heart */
+    .header-image + p {
+        margin-top: 5px !important; /* Adjust this to match your desktop spacing exactly */
+        padding-top: 0 !important;
+    }
 
 }
 
@@ -349,7 +364,7 @@
             <!-- Wrapper for the English version -->
 			<div class="en" style="margin: 0; line-height: 2;">
 				<p style="margin-bottom: 20px;"><strong style="font-size: 1.1em;">28.08.2026</strong></p>
-				<p>Ceremony Time at 14:00</p>
+				<p>Ceremony at 14:00</p>
 				<p>Sé Catedral de Vila Real<br>
 				   Av. Carvalho Araújo 89, 5000-657 Vila Real, Portugal</p>
 				<p>Wedding reception to follow</p>
