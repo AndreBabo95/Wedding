@@ -78,6 +78,18 @@
         #step2 { display: none; } 
         #loading { display: none; text-align: center; color: var(--accent-color); margin-top: 20px; font-style: italic; }
         #error-msg { display: none; color: #d9534f; margin-top: 15px; text-align: center; font-weight: 600; }
+		
+		/* Removes default iOS blue styling and rounded corners */
+		button, 
+			input[type="button"], 
+			input[type="submit"] {
+				/* This is the only line that fixes the "iPhone Blue" look */
+				-webkit-appearance: none; 
+				appearance: none;
+				
+				/* This ensures the button keeps its sharp corners if you have them */
+				border-radius: 0; 
+			}
         
     </style>
 	<!-- Favicon Link -->
