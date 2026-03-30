@@ -79,18 +79,14 @@
         #loading { display: none; text-align: center; color: var(--accent-color); margin-top: 20px; font-style: italic; }
         #error-msg { display: none; color: #d9534f; margin-top: 15px; text-align: center; font-weight: 600; }
 		
-		/* Removes default iOS blue styling and rounded corners */
-		button, 
-			input[type="button"], 
-			input[type="submit"] {
-				/* This is the only line that fixes the "iPhone Blue" look */
-				-webkit-appearance: none; 
-				appearance: none;
-				
-				/* This ensures the button keeps its sharp corners if you have them */
-				border-radius: 0; 
-			}
-        
+	.action-btn {
+    /* 1. Removes the blue flash when you tap the button */
+    -webkit-tap-highlight-color: transparent;
+
+    /* 2. Forces iOS to use your red color instead of system blue */
+    -webkit-appearance: none;
+    appearance: none;
+        }
     </style>
 	<!-- Favicon Link -->
 <link rel="icon" type="image/png" href="favicon.png">
@@ -136,7 +132,7 @@
 
             <div id="loading">
                 <span class="en">Searching guest list...</span>
-                <span class="pt"Pesquisar na lista de convidados...</span>
+                <span class="pt">Pesquisar na lista de convidados...</span>
             </div>
             <div id="error-msg">
                 <span class="en">We couldn't find your name</span>
