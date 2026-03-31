@@ -7,6 +7,11 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Ms+Madi&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     
     <style>
         :root {
@@ -17,6 +22,7 @@
         
         body {
             font-family: 'Montserrat', sans-serif;
+			font-weight: 250;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -25,23 +31,10 @@
             overflow-x: hidden; 
         }
 
-        h1, h2, h3 { font-family: 'Lora', serif; font-weight: 500; }
+        h1, h2, h3 { ont-family: 'Montserrat', sans-serif; font-weight: 400; }
         .container { max-width: 1200px; margin: 0 auto;  }
 
-        /* --- MODERN INTERACTIVE LANG TOGGLE --- */
-        .lang-toggle { text-align: right; padding: 20px; position: relative; z-index: 100; }
-        .lang-toggle button {
-            background: rgba(140, 154, 139, 0.1); border: 1px solid var(--accent-color);
-            padding: 8px 18px; border-radius: 30px; cursor: pointer;
-            color: var(--accent-color); font-family: 'Montserrat', sans-serif;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            backdrop-filter: blur(5px);
-        }
-        .lang-toggle button:hover { 
-            background: var(--accent-color); color: white; 
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(140, 154, 139, 0.3);
-        }
+        
 
         header { margin-bottom: 60px; }
         .date { font-size: 1.2em; letter-spacing: 2px; margin-bottom: 30px; }
@@ -254,16 +247,16 @@
 }
 
 .timeline-column h4 {
-    font-size: 0.8em !important;
+    font-size: 1.4em !important;
     text-transform: uppercase;
     margin-bottom: 8px;
     min-height: 35px; /* Keeps headers aligned if one wraps to 2 lines */
 }
 
 .timeline-text {
-    font-size: 0.7em !important;
+    font-size: 1.5em !important;
     line-height: 1.3;
-    margin-top: 5px !important;
+    margin-top: 30px !important;
 }
 
 /* Mobile Tweak: Ensure they stay inline on iPhone */
@@ -277,8 +270,37 @@
     }
 }
 
+/* --- MODERN INTERACTIVE LANG TOGGLE --- */
+        .lang-toggle { text-align: right; padding: 20px; position: relative; z-index: 100; }
+        .lang-toggle button {
+            background: rgba(140, 154, 139, 0.1); border: 1px solid var(--accent-color);
+            padding: 8px 18px; border-radius: 30px; cursor: pointer;
+            color: var(--accent-color); 
+			font-family: 'Montserrat', sans-serif; 
+			font-size: 0.9em !important;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            backdrop-filter: blur(5px);
+        }
+        .lang-toggle button:hover { 
+            background: var(--accent-color); color: white; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(140, 154, 139, 0.3);
+        }
 		
-		
+		.date-text {
+    font-weight: 100 !important;
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 12px;         /* Spreading the numbers makes them look thinner */
+    text-transform: uppercase;
+    
+    
+    /* THE SECRET FOR IPHONES/MAC: Forces the thinnest possible rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    /* Ensure no shadow or bolding is inherited */
+    text-shadow: none !important;
+}
 		
 
        /* --- MOBILE RESPONSIVE FIX --- */
@@ -392,6 +414,22 @@
         margin-top: 5px !important; /* Adjust this to match your desktop spacing exactly */
         padding-top: 0 !important;
     }
+	
+	    .horizontal-timeline {
+        flex-direction: column !important; /* Forces vertical stacking */
+        align-items: center;               /* Centers the items vertically */
+        gap: 40px;                         /* Increases space between sections for a premium feel */
+    }
+
+    .timeline-column {
+        max-width: 100%;                   /* Allows columns to take full width on mobile */
+        width: 100%;
+    }
+
+    .timeline-img-box img {
+        width: 100px !important;           /* Slightly larger for a vertical list */
+        height: 100px !important;
+    }
 
 }
 
@@ -404,7 +442,7 @@
 <!-- Password Overlay -->
 <div id="password-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(250, 248, 245, 0.95); backdrop-filter: blur(15px); z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
     <h2 style="font-family: 'Lora', serif; color: #7A1212; margin-bottom: 20px;">Welcome / Bem-vindo</h2>
-    <p style="font-family: 'Montserrat', sans-serif; color: #666; margin-bottom: 30px;">Please enter the password:<br><em>Por favor, insira a password:</em></p>
+    <p style="font-family: 'Montserrat', sans-serif; color: #666; margin-bottom: 30px;">Enter the password:<br><em>Insira a password:</em></p>
     <input type="password" id="wedding-pass" style="padding: 12px; border: 1px solid #7A1212; border-radius: 30px; text-align: center; width: 200px; font-family: 'Montserrat', sans-serif;">
     <button onclick="checkPassword()" style="margin-top: 20px; background: #7A1212; color: white; border: none; padding: 12px 30px; border-radius: 30px; cursor: pointer; font-family: 'Lora', serif;">Enter / Entrar</button>
     <p id="pass-error" style="color: #d9534f; margin-top: 15px; display: none; font-size: 0.9em;">Incorrect password / Password incorreto</p>
@@ -420,8 +458,8 @@
 
     <div class="lang-toggle">
         <button onclick="toggleLanguage()">
-            <span class="en">Mudar para Português</span>
-            <span class="pt">Switch to English</span>
+            <span class="en" style="font-size:0.9em">Mudar para Português</span>
+            <span class="pt" style="font-size:0.9em">Switch to English</span>
         </button>
     </div>
 
@@ -451,10 +489,30 @@
     </header>
 
         <div class="reveal" style="margin: 10px auto 10px auto; text-align: center; max-width: 1100px;">
-            <h2 class="en header" style="margin: 0 0 40px 0; font-size: 3.5em; color:#7A1212;">Our Wedding Day</h2>
-            <h2 class="pt header" style="margin: 0 0 40px 0; font-size: 3.5em; color:#7A1212;">O Nosso Casamento</h2>
+		<p class="date-text" style="margin-bottom: 20px; margin-top: 20px; font-size: 6em;">28.08.2026</p>
+		<!-- Wrapper for the English version -->
+			<div class="en" style="margin: 0; line-height: 2;">
 			
-			<p style="margin-bottom: 20px;"><strong style="font-size: 2em;">28.08.2026</strong></p>
+				<p>Sé Catedral de Vila Real<br>
+				   Av. Carvalho Araújo 89 <br>
+				   5000-657 Vila Real, Portugal</p>
+			</div>
+
+			<!-- Wrapper for the Portuguese version -->
+			<div class="pt" style="margin: 0; line-height: 2;">
+				<p style="margin-bottom: 20px;"><strong style="font-size: 1.1em;">28.08.2026</strong></p>
+				<p>Cerimónia às 14:00</p>
+				<p>Sé Catedral de Vila Real<br>
+				   Av. Carvalho Araújo 89, 5000-657 Vila Real, Portugal</p>
+			</div>
+			<div class="divider"></div>
+            <h2 class="en header" style="margin: 0 0 40px 0; font-size: 3.5em; color:#7A1212;">OUR WEDDING DAY</h2>
+            <h2 class="pt header" style="margin: 0 0 40px 0; font-size: 3.5em; color:#7A1212;">O NOSSO CASAMENTO</h2>
+			
+			
+			
+			
+			
 		<div class="horizontal-timeline">
 			<!-- Section 1: Ceremony -->
 			<div class="timeline-column">
@@ -464,54 +522,39 @@
 					<img src="ceremony.png" alt="Ceremony">
 				</div>
 				<!-- Added Text Below -->
-				<p class="en timeline-text">The ceremony will take place at the Cathedral, followed by a short walk.</p>
-				<p class="pt timeline-text">A cerimónia terá lugar na Sé Catedral, seguida de uma curta caminhada.</p>
+				<p class="en timeline-text">14:00</p>
+				<p class="pt timeline-text">14:00</p>
 			</div>
 
 			<!-- Section 2: Canapes -->
+			<!-- Section 2: Canapes -->
 			<div class="timeline-column">
-				<h4 class="en">Canapes + Cocktails</h4>
-				<h4 class="pt">Canapés e Cocktails</h4>
+				<h4 class="en">Canapés & Cocktails</h4>
+				<h4 class="pt">Canapés & Cocktails</h4>
 				<div class="timeline-img-box">
 					<img src="cocktails.png" alt="Cocktails">
 				</div>
 				<!-- Added Text Below -->
-				<p class="en timeline-text">Enjoy a selection of local appetizers and drinks in the garden.</p>
-				<p class="pt timeline-text">Desfrute de uma seleção de aperitivos e bebidas regionais no jardim.</p>
+				<p class="en timeline-text">16:00 - 19:00</p>
+				<p class="pt timeline-text">16:00 - 19:00</p>
 			</div>
 
 			<!-- Section 3: Dinner -->
 			<div class="timeline-column">
-				<h4 class="en">Dinner + Dancing</h4>
-				<h4 class="pt">Jantar e Baile</h4>
+				<h4 class="en">Dinner & Dancing</h4>
+				<h4 class="pt">Jantar & Baile</h4>
 				<div class="timeline-img-box">
-					<img src="dinner.jpg" alt="Dinner">
+					<img src="dinner.png" alt="Dinner">
 				</div>
 				<!-- Added Text Below -->
-				<p class="en timeline-text">A formal dinner will be served, followed by a night of celebration.</p>
-				<p class="pt timeline-text">Será servido um jantar formal, seguido de uma noite de celebração.</p>
+				<p class="en timeline-text">19:00 - 02:00</p>
+				<p class="pt timeline-text">19:00 - 02:00</p>
 			</div>
 		</div>
 
 
             
-            <!-- Wrapper for the English version -->
-			<div class="en" style="margin: 0; line-height: 2;">
-				<p style="margin-bottom: 20px;"><strong style="font-size: 1.1em;">28.08.2026</strong></p>
-				<p>Ceremony at 14:00</p>
-				<p>Sé Catedral de Vila Real<br>
-				   Av. Carvalho Araújo 89, 5000-657 Vila Real, Portugal</p>
-				<p>Wedding reception to follow</p>
-			</div>
-
-			<!-- Wrapper for the Portuguese version -->
-			<div class="pt" style="margin: 0; line-height: 2;">
-				<p style="margin-bottom: 20px;"><strong style="font-size: 1.1em;">28.08.2026</strong></p>
-				<p>Cerimónia às 14:00</p>
-				<p>Sé Catedral de Vila Real<br>
-				   Av. Carvalho Araújo 89, 5000-657 Vila Real, Portugal</p>
-				<p>Segue-se o copo de água</p>
-			</div>
+            
 
              
             <div class="divider"></div>
