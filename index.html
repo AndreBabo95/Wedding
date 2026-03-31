@@ -95,16 +95,16 @@
         .faq-item { border-bottom: 1px solid rgba(140, 154, 139, 0.2); padding: 20px 0; transition: all 0.3s ease; }
         .faq-item:hover { border-bottom: 1px solid var(--accent-color); } 
         .faq-question {
-            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.4em;
+            font-family: 'Montserrat', sans-serif; font-weight: 200; font-size: 1.4em;
             color: #000000; cursor: pointer; display: flex; 
             justify-content: space-between; align-items: center; list-style: none;
             transition: color 0.3s ease;
         }
         
         .faq-question::-webkit-details-marker { display: none; }
-        .faq-question::after { content: '+'; font-size: 1.5em; font-weight: 300; transition: transform 0.4s ease; }
+        .faq-question::after { content: '+'; font-size: 1.5em; font-weight: 100; transition: transform 0.4s ease; }
         details[open] .faq-question::after { transform: rotate(45deg); } 
-        .faq-answer { margin-top: 20px; line-height: 1.8; font-size: 1.1em; animation: slideDown 0.4s ease-out; }
+        .faq-answer { margin-top: 20px; line-height: 1.8; font-size: 0.9em; animation: slideDown 0.4s ease-out; }
 
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
@@ -329,7 +329,7 @@
             p { font-size: 1em !important; line-height: 1.6 !important; }
             
             /* SHRINKS FAQ QUESTIONS ON MOBILE */
-            .faq-question { font-size: 1.15em !important; }
+            .faq-question { font-size: 1em !important; }
 			
 			/* MAKES THE VERY LAST LINE OF TEXT MUCH SMALLER ON MOBILE */
             .footer-note p { 
@@ -590,8 +590,8 @@
         <div class="divider "></div>
 
         <div class="faq-section reveal">
-            <h2 class="en header" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#7A1212;">Frequently Asked Questions</h2>
-            <h2 class="pt header" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#7A1212;">Perguntas Frequentes</h2>
+            <h2 class="en header" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#7A1212;">FREQUENTLY ASKED QUESTIONS</h2>
+            <h2 class="pt header" style="text-align: center; font-size: 3.5em; margin-bottom: 50px; color:#7A1212;">PERGUNTAS FREQUENTES</h2>
 
             <details class="faq-item">
                 <summary class="faq-question">
@@ -662,8 +662,8 @@
         
 
         <div class="footer-note reveal">
-            <h2 class="en" style="color: var(--accent-color); margin-bottom: 15px;">We can't wait to celebrate with you!</h2>
-            <h2 class="pt" style="color: var(--accent-color); margin-bottom: 15px;">Estamos ansiosos para celebrar com vocês!</h2>
+            <h2 class="en" style="color: var(--accent-color); margin-bottom: 15px;">WE CAN'T WAIT TO CELEBREATE WITH YOU!</h2>
+            <h2 class="pt" style="color: var(--accent-color); margin-bottom: 15px;">ESTAMOS ANSIOSOS PARA CELEBRAR COME VOCÊS!</h2>
             
             <p style="letter-spacing: 3px; font-size: 1.1em; color: #000000; text-transform: uppercase;">Vila Real, Portugal &nbsp;|&nbsp; 28.08.2026</p>
 			<img class="header-image reveal active heart" src="favicon.png" style="display: block; margin: 40px auto 0 auto; height: 50px; opacity: 0.5;">
