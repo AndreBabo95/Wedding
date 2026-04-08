@@ -684,7 +684,7 @@
                 </div>
             </details>
 			
-			<details class="faq-item en">
+			<details class="faq-item en-only">
                 <summary class="faq-question">
                     <span class="en">International travel tips</span>
                 </summary>
@@ -751,17 +751,23 @@
             });
         };
 
-        window.chooseLanguage = function(lang) {
-            try { localStorage.setItem('weddingLang', lang); } catch(e) {}
-            window.currentLang = lang;
-            
-            // Modern fade out for the modal
-            const modal = document.getElementById('language-modal');
-            modal.style.opacity = '0';
-            setTimeout(() => { modal.style.display = 'none'; }, 500);
-            
-            window.setLanguage(lang); 
-        };
+        window.setLanguage = function(lang) {
+    // Hide all text elements
+    document.querySelectorAll('.en').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.pt').forEach(el => el.style.display = 'none');
+    
+    // Show text elements for the selected language
+    document.querySelectorAll(`.${lang}`).forEach(el => {
+        el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
+    });
+
+    // --- FIX FOR THE EMPTY BOX ---
+    // This tells the whole box to hide if the language is NOT English
+    document.querySelectorAll('.en-only').forEach(box => {
+        box.style.display = (lang === 'en') ? 'block' : 'none';
+    });
+};
+
 
         window.toggleLanguage = function() {
             window.currentLang = window.currentLang === 'en' ? 'pt' : 'en';
