@@ -496,7 +496,7 @@
 
     <div id="language-modal">
         <div class="modal-content">
-            <h2>Welcome / Bem-vindo</h2>
+            <h2 style="font-family: 'Montserrat', sans-serif">Welcome / Bem-vindo</h2>
             <button class="lang-choice-btn" onclick="chooseLanguage('en')">English</button>
             <button class="lang-choice-btn" onclick="chooseLanguage('pt')">Português</button>
         </div>
@@ -738,97 +738,108 @@
     </div>
 
     <script>
-        // --- SAFE Smart Language Logic ---
-        try { window.currentLang = localStorage.getItem('weddingLang'); } 
-        catch(e) { window.currentLang = null; }
-
-        window.setLanguage = function(lang) {
-            document.querySelectorAll('.en').forEach(el => el.style.display = 'none');
-            document.querySelectorAll('.pt').forEach(el => el.style.display = 'none');
-            
-            document.querySelectorAll(`.${lang}`).forEach(el => {
-                el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
-            });
-        };
-
-        window.setLanguage = function(lang) {
-    // Hide all text elements
-    document.querySelectorAll('.en').forEach(el => el.style.display = 'none');
-    document.querySelectorAll('.pt').forEach(el => el.style.display = 'none');
-    
-    // Show text elements for the selected language
-    document.querySelectorAll(`.${lang}`).forEach(el => {
-        el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
-    });
-
-    // --- FIX FOR THE EMPTY BOX ---
-    // This tells the whole box to hide if the language is NOT English
-    document.querySelectorAll('.en-only').forEach(box => {
-        box.style.display = (lang === 'en') ? 'block' : 'none';
-    });
-};
-
-
-        window.toggleLanguage = function() {
-            window.currentLang = window.currentLang === 'en' ? 'pt' : 'en';
-            try { localStorage.setItem('weddingLang', window.currentLang); } catch(e) {}
-            window.setLanguage(window.currentLang);
-        };
-
-        if (!window.currentLang) {
-            document.getElementById('language-modal').style.display = 'flex';
-        } else {
-            document.getElementById('language-modal').style.display = 'none';
-            window.setLanguage(window.currentLang);
-        }
-
-        // --- MODERN SCROLL REVEAL JAVASCRIPT ---
-        function revealOnScroll() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100; // Triggers when element is 100px into the screen
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", revealOnScroll);
-        revealOnScroll(); 
-		
-function checkPassword() {
-    const inputField = document.getElementById('wedding-pass');
-    const pass = inputField.value;
-    const correctPass = "vilareal2026"; 
-
-    if (pass === correctPass) {
-        // 1. Close the iPhone keyboard and release the scroll lock
-        inputField.blur(); 
-
-        // 2. Hide the overlay
-        document.getElementById('password-overlay').style.display = 'none';
-        sessionStorage.setItem('unlocked', 'true');
-
-        // 3. Force the page to the top (with a tiny delay to ensure the keyboard is gone)
-        setTimeout(() => {
-            window.scrollTo(0, 0);
-            document.body.scrollTop = 0; // Backup for older Safari versions
-        }, 10);
-
-    } else {
-        document.getElementById('pass-error').style.display = 'block';
+    // 1. INITIALIZE LANGUAGE STATE
+    try { 
+        window.currentLang = localStorage.getItem('weddingLang'); 
+    } catch(e) { 
+        window.currentLang = null; 
     }
-}
 
-    // Check if they already unlocked it this session
-    window.onload = function() {
-        if (sessionStorage.getItem('unlocked') === 'true') {
-            document.getElementById('password-overlay').style.display = 'none';
+    // 2. THE LANGUAGE SWITCHER LOGIC
+    window.setLanguage = function(lang) {
+        if (!lang) return;
+        
+        // Update the HTML lang attribute
+        document.documentElement.lang = lang;
+
+        // Hide all elements with .en and .pt classes
+        document.querySelectorAll('.en, .pt').forEach(el => el.style.display = 'none');
+        
+        // Show only the elements for the selected language
+        document.querySelectorAll(`.${lang}`).forEach(el => {
+            // Keep spans inline, set others (p, h2, div) to block
+            el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
+        });
+
+        // HIDE THE WHOLE FAQ BOX for English-only items
+        document.querySelectorAll('.en-only').forEach(box => {
+            box.style.display = (lang === 'en') ? 'block' : 'none';
+        });
+    };
+
+    // 3. SELECTION FROM MODAL
+    window.chooseLanguage = function(lang) {
+        try { localStorage.setItem('weddingLang', lang); } catch(e) {}
+        window.currentLang = lang;
+        
+        // Apply the language first
+        window.setLanguage(lang);
+        
+        // Modern fade out for the modal
+        const modal = document.getElementById('language-modal');
+        if (modal) {
+            modal.style.opacity = '0';
+            setTimeout(() => { 
+                modal.style.display = 'none'; 
+                document.body.classList.remove('modal-open');
+            }, 500);
         }
     };
 
+    // 4. THE TOGGLE BUTTON AT TOP OF PAGE
+    window.toggleLanguage = function() {
+        window.currentLang = (window.currentLang === 'en') ? 'pt' : 'en';
+        try { localStorage.setItem('weddingLang', window.currentLang); } catch(e) {}
+        window.setLanguage(window.currentLang);
+    };
 
-    </script>
+    // 5. RUN ON PAGE LOAD
+    if (!window.currentLang) {
+        document.getElementById('language-modal').style.display = 'flex';
+    } else {
+        document.getElementById('language-modal').style.display = 'none';
+        window.setLanguage(window.currentLang);
+    }
+
+    // --- PASSWORD CHECK ---
+    window.checkPassword = function() {
+        const inputField = document.getElementById('wedding-pass');
+        const pass = inputField.value;
+        const correctPass = "vilareal2026"; 
+
+        if (pass === correctPass) {
+            inputField.blur(); 
+            document.getElementById('password-overlay').style.display = 'none';
+            sessionStorage.setItem('unlocked', 'true');
+
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 10);
+        } else {
+            document.getElementById('pass-error').style.display = 'block';
+        }
+    };
+
+    // Keep the overlay hidden if already logged in
+    if (sessionStorage.getItem('unlocked') === 'true') {
+        document.getElementById('password-overlay').style.display = 'none';
+    }
+
+    // --- SCROLL REVEAL ---
+    function revealOnScroll() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 100;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll(); 
+</script>
+
 </body>
 </html>
