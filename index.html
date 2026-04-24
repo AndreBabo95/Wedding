@@ -693,6 +693,15 @@
                 </div>
             </details>
 			
+			<details class="faq-item pt-only">
+                <summary class="faq-question">
+                    <span class="pt">Onde posso ficar?</span>
+                </summary>
+                <div class="faq-answer">
+                    <p class="pt">A nossa recomendação para dormida é o Hotel Mira Corgo em Vila Real, apenas 4 minutos da Sé Catedral.</p>
+                </div>
+            </details>
+			
 			<details class="faq-item en-only">
                 <summary class="faq-question">
                     <span class="en">Any international travel tips?</span>
@@ -773,6 +782,11 @@
         // HIDE THE WHOLE FAQ BOX for English-only items
         document.querySelectorAll('.en-only').forEach(box => {
             box.style.display = (lang === 'en') ? 'block' : 'none';
+        });
+		
+		// HIDE THE WHOLE FAQ BOX for PT-only items
+        document.querySelectorAll('.pt-only').forEach(box => {
+            box.style.display = (lang === 'pt') ? 'block' : 'none';
         });
     };
 
