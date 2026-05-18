@@ -838,7 +838,7 @@
     // --- PASSWORD CHECK ---
     window.checkPassword = function() {
         const inputField = document.getElementById('wedding-pass');
-        const pass = inputField.value;
+        const pass = inputField.value.trim().toLowerCase();
         const correctPass = ["vilareal2026", "Danv2", "Dandingo", "ShookDan"]; 
 
         if (pass === correctPass) {
