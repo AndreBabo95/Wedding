@@ -838,8 +838,8 @@
     // --- PASSWORD CHECK ---
     window.checkPassword = function() {
         const inputField = document.getElementById('wedding-pass');
-        const pass = inputField.value;
-        const correctPass = ["vilareal2026", "VILAREAL2026"]; 
+        const pass = inputField.value.trim().toLowerCase();
+        const correctPass = "vilareal2026"; 
 
         if (pass === correctPass) {
             inputField.blur(); 
