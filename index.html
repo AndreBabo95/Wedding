@@ -838,10 +838,10 @@
     // --- PASSWORD CHECK ---
     window.checkPassword = function() {
         const inputField = document.getElementById('wedding-pass');
-        const pass = inputField.value.trim().toLowerCase();
+		const pass = inputField.value.trim().toLowerCase();
         const correctPass = ["vilareal2026", "Danv2", "Dandingo", "ShookDan"]; 
 
-        if (pass === correctPass) {
+        if (correctPass.includes(pass)) {
             inputField.blur(); 
             document.getElementById('password-overlay').style.display = 'none';
             sessionStorage.setItem('unlocked', 'true');
